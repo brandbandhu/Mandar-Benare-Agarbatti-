@@ -33,7 +33,7 @@ export function Header() {
 
   return (
     <>
-      <div className="bg-nav text-nav-foreground text-xs">
+      <div className="bg-nav text-nav-foreground text-xs border-b border-border/70">
         <div className="container-x flex items-center justify-center py-2 text-center">
           <span>
             Free shipping on selected pooja essentials · Fast delivery within 7 days · Trusted
@@ -42,7 +42,7 @@ export function Header() {
         </div>
       </div>
       <header
-        className={`sticky top-0 z-40 bg-nav text-nav-foreground backdrop-blur transition-all ${scrolled ? "shadow-card" : ""}`}
+        className={`sticky top-0 z-40 bg-nav text-nav-foreground border-b border-border/70 backdrop-blur transition-all ${scrolled ? "shadow-card" : ""}`}
       >
         <div className="container-x flex h-20 md:h-24 items-center justify-between gap-4">
           <Link
@@ -69,14 +69,14 @@ export function Header() {
             <button
               aria-label="Search"
               onClick={() => setSearch((s) => !s)}
-              className="p-2 rounded-full hover:bg-white/10"
+              className="p-2 rounded-full hover:bg-primary/10"
             >
               <Search className="h-5 w-5" />
             </button>
             <button
               aria-label="Cart"
               onClick={() => setOpen(true)}
-              className="relative p-2 rounded-full hover:bg-white/10"
+              className="relative p-2 rounded-full hover:bg-primary/10"
             >
               <ShoppingBag className="h-5 w-5" />
               {count > 0 && (
@@ -88,7 +88,7 @@ export function Header() {
             <button
               aria-label="Menu"
               onClick={() => setMobile(true)}
-              className="lg:hidden p-2 rounded-full hover:bg-white/10"
+              className="lg:hidden p-2 rounded-full hover:bg-primary/10"
             >
               <Menu className="h-5 w-5" />
             </button>

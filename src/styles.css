@@ -52,8 +52,8 @@
   --popover-foreground: oklch(0.24 0.02 50);
   --primary: oklch(0.34 0.07 145);               /* deep forest green */
   --primary-foreground: oklch(0.97 0.02 85);
-  --nav: #183d1d;                                 /* darker site green for navbar */
-  --nav-foreground: oklch(0.97 0.02 85);
+  --nav: var(--cream);                            /* cream navbar */
+  --nav-foreground: var(--foreground);
   --secondary: oklch(0.55 0.16 45);              /* terracotta */
   --secondary-foreground: oklch(0.98 0.02 85);
   --muted: oklch(0.93 0.018 85);
@@ -87,8 +87,8 @@
   --popover-foreground: oklch(0.96 0.02 85);
   --primary: oklch(0.72 0.14 78);
   --primary-foreground: oklch(0.18 0.02 50);
-  --nav: #183d1d;
-  --nav-foreground: oklch(0.97 0.02 85);
+  --nav: var(--cream);
+  --nav-foreground: var(--foreground);
   --secondary: oklch(0.55 0.16 45);
   --secondary-foreground: oklch(0.98 0.02 85);
   --muted: oklch(0.28 0.02 50);
