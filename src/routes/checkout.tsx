@@ -23,8 +23,11 @@ function CheckoutPage() {
       <Breadcrumb
         items={[{ label: "Home", to: "/" }, { label: "Cart", to: "/cart" }, { label: "Checkout" }]}
       />
-      <h1 className="font-serif text-4xl mt-3 mb-8">Checkout</h1>
-      <form onSubmit={submit} className="grid lg:grid-cols-[1fr_380px] gap-10">
+      <h1 className="mt-3 mb-8 break-words font-serif text-3xl sm:text-4xl">Checkout</h1>
+      <form
+        onSubmit={submit}
+        className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_360px] xl:grid-cols-[minmax(0,1fr)_380px]"
+      >
         <div className="space-y-8">
           <Section title="Contact Information">
             <Input name="name" label="Full Name" required />
@@ -58,7 +61,7 @@ function CheckoutPage() {
             ))}
           </Section>
         </div>
-        <aside className="rounded-2xl border bg-card p-6 h-fit space-y-4">
+        <aside className="h-fit space-y-4 rounded-2xl border bg-card p-5 sm:p-6">
           <h2 className="font-serif text-xl">Order Summary</h2>
           <div className="space-y-3 max-h-72 overflow-y-auto">
             {items.length === 0 && (
@@ -66,14 +69,20 @@ function CheckoutPage() {
             )}
             {items.map((it) => (
               <div key={it.product.id + it.pack} className="flex gap-3 text-sm">
-                <img src={it.product.image} alt="" className="h-14 w-14 rounded-lg object-cover" />
-                <div className="flex-1">
-                  <div className="font-medium leading-tight">{it.product.name}</div>
+                <img
+                  src={it.product.image}
+                  alt=""
+                  className="h-14 w-14 shrink-0 rounded-lg object-cover"
+                />
+                <div className="min-w-0 flex-1">
+                  <div className="break-words font-medium leading-tight">{it.product.name}</div>
                   <div className="text-xs text-muted-foreground">
                     {it.pack} × {it.qty}
                   </div>
                 </div>
-                <div className="font-medium">{rupees.format(it.qty * it.product.price)}</div>
+                <div className="shrink-0 font-medium">
+                  {rupees.format(it.qty * it.product.price)}
+                </div>
               </div>
             ))}
           </div>
@@ -102,7 +111,7 @@ function CheckoutPage() {
 }
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="rounded-2xl border bg-card p-6">
+    <div className="rounded-2xl border bg-card p-5 sm:p-6">
       <h2 className="font-serif text-xl mb-4">{title}</h2>
       <div className="space-y-4">{children}</div>
     </div>

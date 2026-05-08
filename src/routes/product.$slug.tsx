@@ -71,13 +71,13 @@ function ProductPage() {
           ]}
         />
       </div>
-      <section className="container-x py-10 grid lg:grid-cols-2 gap-10 lg:gap-16">
-        <div>
+      <section className="container-x grid gap-8 py-8 md:py-10 lg:grid-cols-2 lg:gap-16">
+        <div className="min-w-0">
           <div className="aspect-square overflow-hidden rounded-3xl bg-muted shadow-soft">
             <img src={activeImage} alt={p.name} className="h-full w-full object-cover" />
           </div>
           {gallery.length > 1 && (
-            <div className="mt-4 grid grid-cols-5 gap-3">
+            <div className="mt-4 grid grid-cols-4 gap-2 sm:grid-cols-5 sm:gap-3">
               {gallery.map((image, index) => (
                 <button
                   key={image}
@@ -91,13 +91,13 @@ function ProductPage() {
             </div>
           )}
         </div>
-        <div>
-          <div className="text-xs uppercase tracking-[0.25em] text-secondary">
+        <div className="min-w-0">
+          <div className="break-words text-xs uppercase tracking-[0.25em] text-secondary">
             {p.category} · {p.subcategory}
           </div>
-          <h1 className="font-serif text-3xl md:text-5xl mt-2">{p.name}</h1>
-          <div className="mt-3 flex items-center gap-2 text-sm">
-            <span className="flex text-accent">
+          <h1 className="mt-2 break-words font-serif text-3xl md:text-5xl">{p.name}</h1>
+          <div className="mt-3 flex flex-wrap items-center gap-2 text-sm">
+            <span className="flex shrink-0 text-accent">
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star key={i} className={`h-4 w-4 ${i < roundedRating ? "fill-current" : ""}`} />
               ))}
@@ -131,8 +131,8 @@ function ProductPage() {
             </div>
           </div>
 
-          <div className="mt-6 flex items-center gap-4">
-            <div className="inline-flex items-center border rounded-full">
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
+            <div className="inline-flex w-fit items-center rounded-full border">
               <button onClick={() => setQty((q) => Math.max(1, q - 1))} className="p-3">
                 <Minus className="h-4 w-4" />
               </button>
@@ -143,7 +143,7 @@ function ProductPage() {
             </div>
             <button
               onClick={() => add(p, qty, pack)}
-              className="flex-1 inline-flex items-center justify-center gap-2 btn-saffron rounded-full px-6 py-3.5 font-medium"
+              className="inline-flex w-full flex-1 items-center justify-center gap-2 rounded-full btn-saffron px-6 py-3.5 font-medium"
             >
               <ShoppingBag className="h-4 w-4" /> Add to Cart
             </button>
@@ -156,22 +156,22 @@ function ProductPage() {
             Buy Now
           </Link>
 
-          <div className="mt-8 grid grid-cols-3 gap-3 text-xs text-muted-foreground">
+          <div className="mt-8 grid grid-cols-1 gap-3 text-xs text-muted-foreground sm:grid-cols-3">
             <div className="flex items-center gap-2">
-              <Truck className="h-4 w-4 text-secondary" /> 7-day dispatch
+              <Truck className="h-4 w-4 shrink-0 text-secondary" /> 7-day dispatch
             </div>
             <div className="flex items-center gap-2">
-              <Shield className="h-4 w-4 text-secondary" /> Secure payments
+              <Shield className="h-4 w-4 shrink-0 text-secondary" /> Secure payments
             </div>
             <div className="flex items-center gap-2">
-              <Leaf className="h-4 w-4 text-secondary" /> Handcrafted
+              <Leaf className="h-4 w-4 shrink-0 text-secondary" /> Handcrafted
             </div>
           </div>
         </div>
       </section>
 
-      <section className="container-x grid md:grid-cols-2 gap-10 py-12">
-        <div className="rounded-2xl border bg-card p-7">
+      <section className="container-x grid gap-6 py-10 md:grid-cols-2 md:gap-10 md:py-12">
+        <div className="rounded-2xl border bg-card p-5 sm:p-7">
           <h2 className="font-serif text-2xl mb-4">Fragrance Profile</h2>
           <ul className="space-y-2 text-sm">
             <li>
@@ -185,7 +185,7 @@ function ProductPage() {
             </li>
           </ul>
         </div>
-        <div className="rounded-2xl border bg-card p-7">
+        <div className="rounded-2xl border bg-card p-5 sm:p-7">
           <h2 className="font-serif text-2xl mb-4">Best Used For</h2>
           <div className="flex flex-wrap gap-2">
             {p.bestFor.map((b) => (
@@ -204,8 +204,8 @@ function ProductPage() {
       </section>
 
       <section className="container-x py-12">
-        <h2 className="font-serif text-3xl mb-8">You may also love</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <h2 className="mb-8 break-words font-serif text-3xl">You may also love</h2>
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {related.map((r) => (
             <ProductCard key={r.id} p={r} />
           ))}

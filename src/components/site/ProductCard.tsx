@@ -10,7 +10,7 @@ export function ProductCard({ p }: { p: Product }) {
   const packLabel = p.gramOptions.length > 1 ? p.gramOptions.join(" / ") : p.packSize;
 
   return (
-    <article className="group relative rounded-2xl bg-card shadow-card overflow-hidden flex flex-col">
+    <article className="group relative flex min-w-0 flex-col overflow-hidden rounded-2xl bg-card shadow-card">
       <Link
         to="/product/$slug"
         params={{ slug: p.slug }}
@@ -36,19 +36,19 @@ export function ProductCard({ p }: { p: Product }) {
           <Heart className="h-4 w-4" />
         </button>
       </Link>
-      <div className="p-4 flex-1 flex flex-col">
-        <div className="text-[11px] uppercase tracking-wider text-muted-foreground">
+      <div className="flex min-w-0 flex-1 flex-col p-3.5 sm:p-4">
+        <div className="break-words text-[11px] uppercase tracking-wider text-muted-foreground">
           {p.category} · {p.fragrance}
         </div>
         <Link
           to="/product/$slug"
           params={{ slug: p.slug }}
-          className="mt-1 font-serif text-lg leading-tight hover:text-secondary transition-colors"
+          className="mt-1 break-words font-serif text-lg leading-tight transition-colors hover:text-secondary"
         >
           {p.name}
         </Link>
-        <div className="text-xs text-muted-foreground mt-1">{packLabel}</div>
-        <div className="mt-3 flex items-center gap-2">
+        <div className="mt-1 break-words text-xs text-muted-foreground">{packLabel}</div>
+        <div className="mt-3 flex flex-wrap items-center gap-2">
           <span className="font-semibold">{p.priceLabel ?? rupees.format(p.price)}</span>
           {p.oldPrice && (
             <span className="text-xs text-muted-foreground line-through">
@@ -58,7 +58,7 @@ export function ProductCard({ p }: { p: Product }) {
         </div>
         <button
           onClick={() => add(p)}
-          className="mt-4 inline-flex items-center justify-center gap-2 rounded-full btn-saffron px-4 py-2.5 text-sm font-medium"
+          className="mt-4 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full btn-saffron px-4 py-2.5 text-sm font-medium"
         >
           <ShoppingBag className="h-4 w-4" /> Add to Cart
         </button>

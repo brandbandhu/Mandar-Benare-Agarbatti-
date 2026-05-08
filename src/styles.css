@@ -5,8 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-serif: 'Cormorant Garamond', 'Playfair Display', ui-serif, Georgia, serif;
-  --font-sans: 'Inter', 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", "Playfair Display", ui-serif, Georgia, serif;
+  --font-sans: "Inter", "Montserrat", ui-sans-serif, system-ui, sans-serif;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -44,21 +44,21 @@
 :root {
   --radius: 0.5rem;
   /* Warm devotional palette */
-  --background: oklch(0.971 0.018 85);          /* warm ivory/cream */
-  --foreground: oklch(0.24 0.02 50);             /* dark brown */
+  --background: oklch(0.971 0.018 85); /* warm ivory/cream */
+  --foreground: oklch(0.24 0.02 50); /* dark brown */
   --card: oklch(0.985 0.012 85);
   --card-foreground: oklch(0.24 0.02 50);
   --popover: oklch(0.985 0.012 85);
   --popover-foreground: oklch(0.24 0.02 50);
-  --primary: oklch(0.34 0.07 145);               /* deep forest green */
+  --primary: oklch(0.34 0.07 145); /* deep forest green */
   --primary-foreground: oklch(0.97 0.02 85);
-  --nav: var(--cream);                            /* cream navbar */
+  --nav: var(--cream); /* cream navbar */
   --nav-foreground: var(--foreground);
-  --secondary: oklch(0.55 0.16 45);              /* terracotta */
+  --secondary: oklch(0.55 0.16 45); /* terracotta */
   --secondary-foreground: oklch(0.98 0.02 85);
   --muted: oklch(0.93 0.018 85);
   --muted-foreground: oklch(0.42 0.03 60);
-  --accent: oklch(0.72 0.14 78);                 /* muted gold */
+  --accent: oklch(0.72 0.14 78); /* muted gold */
   --accent-foreground: oklch(0.22 0.02 50);
   --destructive: oklch(0.55 0.22 27);
   --destructive-foreground: oklch(0.98 0.02 85);
@@ -66,7 +66,7 @@
   --input: oklch(0.88 0.025 80);
   --ring: oklch(0.55 0.16 45);
 
-  --saffron: oklch(0.71 0.18 55);                /* saffron CTA */
+  --saffron: oklch(0.71 0.18 55); /* saffron CTA */
   --saffron-foreground: oklch(0.99 0.01 85);
   --gold: oklch(0.78 0.13 80);
   --terracotta: oklch(0.55 0.16 45);
@@ -101,47 +101,122 @@
 }
 
 @layer base {
-  * { border-color: var(--color-border); }
-  html { scroll-behavior: smooth; }
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
   body {
+    min-width: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     font-feature-settings: "ss01", "cv11";
   }
-  h1, h2, h3, h4, .font-serif {
+  img,
+  video {
+    max-width: 100%;
+  }
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-serif {
     font-family: var(--font-serif);
-    letter-spacing: -0.01em;
+    letter-spacing: 0;
   }
 }
 
 @layer utilities {
-  .container-x { @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8; }
-  .shadow-soft { box-shadow: var(--shadow-soft); }
-  .shadow-card { box-shadow: var(--shadow-card); }
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
   .btn-saffron {
-    background: var(--saffron); color: var(--saffron-foreground);
-    transition: transform .2s ease, filter .2s ease, box-shadow .2s ease;
+    background: var(--saffron);
+    color: var(--saffron-foreground);
+    transition:
+      transform 0.2s ease,
+      filter 0.2s ease,
+      box-shadow 0.2s ease;
   }
-  .btn-saffron:hover { filter: brightness(1.05); transform: translateY(-1px); box-shadow: var(--shadow-soft); }
+  .btn-saffron:hover {
+    filter: brightness(1.05);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-soft);
+  }
   .btn-outline-dark {
-    border: 1px solid var(--foreground); color: var(--foreground); background: transparent;
-    transition: all .2s ease;
+    border: 1px solid var(--foreground);
+    color: var(--foreground);
+    background: transparent;
+    transition: all 0.2s ease;
   }
-  .btn-outline-dark:hover { background: var(--foreground); color: var(--background); }
-  .fade-up { animation: fadeUp .8s ease both; }
-  .fade-in { animation: fadeIn .8s ease both; }
-  @keyframes fadeUp { from { opacity:0; transform: translateY(16px);} to {opacity:1; transform:none;} }
-  @keyframes fadeIn { from { opacity:0;} to {opacity:1;} }
-  .hover-zoom img { transition: transform .7s ease; }
-  .hover-zoom:hover img { transform: scale(1.06); }
+  .btn-outline-dark:hover {
+    background: var(--foreground);
+    color: var(--background);
+  }
+  .fade-up {
+    animation: fadeUp 0.8s ease both;
+  }
+  .fade-in {
+    animation: fadeIn 0.8s ease both;
+  }
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  .hover-zoom img {
+    transition: transform 0.7s ease;
+  }
+  .hover-zoom:hover img {
+    transform: scale(1.06);
+  }
   .link-underline {
     position: relative;
   }
   .link-underline::after {
-    content:""; position:absolute; left:0; right:0; bottom:-2px; height:1px;
-    background: currentColor; transform: scaleX(0); transform-origin: right;
-    transition: transform .3s ease;
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
   }
-  .link-underline:hover::after { transform: scaleX(1); transform-origin: left; }
+  .link-underline:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
 }

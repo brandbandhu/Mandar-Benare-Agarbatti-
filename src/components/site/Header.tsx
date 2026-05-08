@@ -33,8 +33,8 @@ export function Header() {
 
   return (
     <>
-      <div className="bg-nav text-nav-foreground text-xs border-b border-border/70">
-        <div className="container-x flex items-center justify-center py-2 text-center">
+      <div className="bg-nav text-nav-foreground text-[11px] sm:text-xs border-b border-border/70">
+        <div className="container-x flex items-center justify-center py-2 text-center leading-relaxed">
           <span>
             Free shipping on selected pooja essentials · Fast delivery within 7 days · Trusted
             incense for daily worship
@@ -44,15 +44,19 @@ export function Header() {
       <header
         className={`sticky top-0 z-40 bg-nav text-nav-foreground border-b border-border/70 backdrop-blur transition-all ${scrolled ? "shadow-card" : ""}`}
       >
-        <div className="container-x flex h-20 md:h-24 items-center justify-between gap-4">
+        <div className="container-x flex h-16 sm:h-20 md:h-24 items-center justify-between gap-2 sm:gap-4">
           <Link
             to="/"
             className="flex shrink-0 items-center"
             aria-label="Mandar Benare Agarbatti home"
           >
-            <img src={logoImg} alt="Mandar Benare Agarbatti" className="h-14 w-auto md:h-16" />
+            <img
+              src={logoImg}
+              alt="Mandar Benare Agarbatti"
+              className="h-11 w-auto sm:h-14 md:h-16"
+            />
           </Link>
-          <nav className="hidden lg:flex items-center gap-7 text-sm">
+          <nav className="hidden lg:flex items-center gap-4 text-[13px] xl:gap-7 xl:text-sm">
             {nav.map((n) => (
               <Link
                 key={n.to}
@@ -65,18 +69,18 @@ export function Header() {
               </Link>
             ))}
           </nav>
-          <div className="flex items-center gap-2">
+          <div className="flex shrink-0 items-center gap-1 sm:gap-2">
             <button
               aria-label="Search"
               onClick={() => setSearch((s) => !s)}
-              className="p-2 rounded-full hover:bg-primary/10"
+              className="grid h-10 w-10 place-items-center rounded-full hover:bg-primary/10"
             >
               <Search className="h-5 w-5" />
             </button>
             <button
               aria-label="Cart"
               onClick={() => setOpen(true)}
-              className="relative p-2 rounded-full hover:bg-primary/10"
+              className="relative grid h-10 w-10 place-items-center rounded-full hover:bg-primary/10"
             >
               <ShoppingBag className="h-5 w-5" />
               {count > 0 && (
@@ -88,7 +92,7 @@ export function Header() {
             <button
               aria-label="Menu"
               onClick={() => setMobile(true)}
-              className="lg:hidden p-2 rounded-full hover:bg-primary/10"
+              className="grid h-10 w-10 place-items-center rounded-full hover:bg-primary/10 lg:hidden"
             >
               <Menu className="h-5 w-5" />
             </button>
@@ -108,7 +112,7 @@ export function Header() {
                   name="q"
                   autoFocus
                   placeholder="Search agarbatti, dhoop, pooja samagri..."
-                  className="w-full rounded-full border bg-background px-5 py-3 outline-none focus:ring-2 focus:ring-ring"
+                  className="w-full rounded-full border bg-background px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-ring sm:px-5"
                 />
               </form>
             </div>
@@ -118,7 +122,7 @@ export function Header() {
       {mobile && (
         <div className="fixed inset-0 z-50 bg-foreground/40" onClick={() => setMobile(false)}>
           <aside
-            className="absolute right-0 top-0 h-full w-80 max-w-[85%] bg-background p-6 fade-in"
+            className="absolute right-0 top-0 h-full w-full max-w-sm overflow-y-auto bg-background p-5 shadow-soft fade-in sm:p-6"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex justify-between items-center mb-6">

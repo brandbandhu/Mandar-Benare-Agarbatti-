@@ -10,16 +10,16 @@ export function CartDrawer() {
   return (
     <div className="fixed inset-0 z-50 bg-foreground/40 fade-in" onClick={() => setOpen(false)}>
       <aside
-        className="absolute right-0 top-0 h-full w-full sm:w-[420px] bg-background flex flex-col"
+        className="absolute right-0 top-0 flex h-full w-full max-w-[100vw] flex-col bg-background sm:w-[420px]"
         onClick={(e) => e.stopPropagation()}
       >
-        <header className="flex items-center justify-between p-5 border-b">
+        <header className="flex items-center justify-between border-b p-4 sm:p-5">
           <span className="font-serif text-xl">Your Cart</span>
           <button onClick={() => setOpen(false)} className="p-1.5 rounded-full hover:bg-muted">
             <X className="h-5 w-5" />
           </button>
         </header>
-        <div className="flex-1 overflow-y-auto px-5 py-4">
+        <div className="flex-1 overflow-y-auto px-4 py-4 sm:px-5">
           {items.length === 0 ? (
             <div className="h-full grid place-items-center text-center">
               <div>
@@ -35,16 +35,16 @@ export function CartDrawer() {
             </div>
           ) : (
             items.map((it) => (
-              <div key={it.product.id + it.pack} className="flex gap-3 py-4 border-b">
+              <div key={it.product.id + it.pack} className="flex gap-3 border-b py-4">
                 <img
                   src={it.product.image}
                   alt={it.product.name}
-                  className="h-20 w-20 rounded-lg object-cover"
+                  className="h-16 w-16 shrink-0 rounded-lg object-cover sm:h-20 sm:w-20"
                 />
-                <div className="flex-1">
-                  <div className="font-medium leading-tight">{it.product.name}</div>
+                <div className="min-w-0 flex-1">
+                  <div className="break-words font-medium leading-tight">{it.product.name}</div>
                   <div className="text-xs text-muted-foreground">{it.pack}</div>
-                  <div className="mt-2 flex items-center justify-between">
+                  <div className="mt-2 flex flex-wrap items-center justify-between gap-2">
                     <div className="inline-flex items-center border rounded-full">
                       <button
                         onClick={() => setQty(it.product.id, it.pack, it.qty - 1)}
@@ -66,7 +66,7 @@ export function CartDrawer() {
                 <button
                   onClick={() => remove(it.product.id, it.pack)}
                   aria-label="Remove"
-                  className="self-start p-1.5 text-muted-foreground hover:text-destructive"
+                  className="shrink-0 self-start p-1.5 text-muted-foreground hover:text-destructive"
                 >
                   <Trash2 className="h-4 w-4" />
                 </button>
@@ -75,7 +75,7 @@ export function CartDrawer() {
           )}
         </div>
         {items.length > 0 && (
-          <footer className="p-5 border-t space-y-3">
+          <footer className="space-y-3 border-t p-4 sm:p-5">
             <div className="flex justify-between text-sm">
               <span>Subtotal</span>
               <span className="font-semibold">{rupees.format(subtotal)}</span>

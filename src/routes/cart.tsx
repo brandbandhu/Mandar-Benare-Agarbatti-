@@ -15,7 +15,7 @@ function CartPage() {
   return (
     <section className="container-x py-10 md:py-14">
       <Breadcrumb items={[{ label: "Home", to: "/" }, { label: "Cart" }]} />
-      <h1 className="font-serif text-4xl mt-3 mb-8">Your Cart</h1>
+      <h1 className="mt-3 mb-8 break-words font-serif text-3xl sm:text-4xl">Your Cart</h1>
       {items.length === 0 ? (
         <div className="text-center py-20">
           <p className="font-serif text-2xl">Your cart is waiting for fragrance.</p>
@@ -27,22 +27,22 @@ function CartPage() {
           </Link>
         </div>
       ) : (
-        <div className="grid lg:grid-cols-[1fr_360px] gap-10">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_340px] xl:grid-cols-[minmax(0,1fr)_360px]">
           <div className="space-y-4">
             {items.map((it) => (
               <div
                 key={it.product.id + it.pack}
-                className="flex gap-4 rounded-2xl border bg-card p-4"
+                className="flex flex-col gap-4 rounded-2xl border bg-card p-4 sm:flex-row"
               >
                 <img
                   src={it.product.image}
                   alt={it.product.name}
-                  className="h-24 w-24 rounded-lg object-cover"
+                  className="aspect-square w-full rounded-lg object-cover sm:h-24 sm:w-24"
                 />
-                <div className="flex-1">
+                <div className="min-w-0 flex-1">
                   <div className="flex justify-between gap-3">
-                    <div>
-                      <div className="font-medium">{it.product.name}</div>
+                    <div className="min-w-0">
+                      <div className="break-words font-medium">{it.product.name}</div>
                       <div className="text-xs text-muted-foreground">{it.pack}</div>
                     </div>
                     <button
@@ -52,7 +52,7 @@ function CartPage() {
                       <Trash2 className="h-4 w-4" />
                     </button>
                   </div>
-                  <div className="mt-3 flex items-center justify-between">
+                  <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
                     <div className="inline-flex items-center border rounded-full">
                       <button
                         onClick={() => setQty(it.product.id, it.pack, it.qty - 1)}
@@ -74,7 +74,7 @@ function CartPage() {
               </div>
             ))}
           </div>
-          <aside className="rounded-2xl border bg-card p-6 h-fit space-y-4">
+          <aside className="h-fit space-y-4 rounded-2xl border bg-card p-5 sm:p-6">
             <h2 className="font-serif text-xl">Order Summary</h2>
             <div className="flex justify-between text-sm">
               <span>Subtotal</span>

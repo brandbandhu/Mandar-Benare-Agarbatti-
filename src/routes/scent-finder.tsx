@@ -56,14 +56,14 @@ function Quiz() {
         subtitle="Answer 3 quick questions to discover your perfect daily fragrance."
         crumbs={[{ label: "Home", to: "/" }, { label: "Scent Finder" }]}
       />
-      <section className="container-x py-14 max-w-3xl">
+      <section className="container-x py-12 md:py-14">
         {!done ? (
-          <div className="rounded-2xl border bg-card p-8">
+          <div className="mx-auto max-w-3xl rounded-2xl border bg-card p-5 sm:p-8">
             <p className="text-xs uppercase tracking-[0.25em] text-secondary">
               Step {step + 1} of {qs.length}
             </p>
-            <h2 className="font-serif text-2xl md:text-3xl mt-2">{qs[step].q}</h2>
-            <div className="grid sm:grid-cols-2 gap-3 mt-6">
+            <h2 className="mt-2 break-words font-serif text-2xl md:text-3xl">{qs[step].q}</h2>
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
               {qs[step].opts.map((o) => (
                 <button
                   key={o}
@@ -71,7 +71,7 @@ function Quiz() {
                     setAns([...ans, o]);
                     setStep(step + 1);
                   }}
-                  className="text-left rounded-xl border p-4 hover:border-secondary hover:bg-muted transition-colors"
+                  className="rounded-xl border p-4 text-left transition-colors hover:border-secondary hover:bg-muted"
                 >
                   {o}
                 </button>
@@ -80,24 +80,24 @@ function Quiz() {
           </div>
         ) : (
           <div>
-            <h2 className="font-serif text-3xl">Your perfect picks</h2>
+            <h2 className="break-words font-serif text-3xl">Your perfect picks</h2>
             <p className="text-muted-foreground mt-2">Hand-selected based on your preferences.</p>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-8">
+            <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {recs.map((p) => (
                 <ProductCard key={p.id} p={p} />
               ))}
             </div>
-            <div className="mt-8 flex gap-3">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <button
                 onClick={() => {
                   setAns([]);
                   setStep(0);
                 }}
-                className="btn-outline-dark rounded-full px-6 py-3 text-sm"
+                className="rounded-full btn-outline-dark px-6 py-3 text-sm"
               >
                 Retake
               </button>
-              <Link to="/shop" className="btn-saffron rounded-full px-6 py-3 text-sm">
+              <Link to="/shop" className="rounded-full btn-saffron px-6 py-3 text-center text-sm">
                 Browse All
               </Link>
             </div>

@@ -28,7 +28,12 @@ export function CartProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (typeof window === "undefined") return;
     const raw = localStorage.getItem("mb_cart");
-    if (raw) try { setItems(JSON.parse(raw)); } catch {}
+    if (raw)
+      try {
+        setItems(JSON.parse(raw));
+      } catch {
+        localStorage.removeItem("mb_cart");
+      }
   }, []);
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -37,26 +42,41 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   const add: CartCtx["add"] = (p, qty = 1, pack) => {
     const usePack = pack ?? p.packSize;
-    setItems(prev => {
-      const i = prev.findIndex(x => x.product.id === p.id && x.pack === usePack);
+    setItems((prev) => {
+      const i = prev.findIndex((x) => x.product.id === p.id && x.pack === usePack);
       if (i >= 0) {
-        const next = [...prev]; next[i] = { ...next[i], qty: next[i].qty + qty }; return next;
+        const next = [...prev];
+        next[i] = { ...next[i], qty: next[i].qty + qty };
+        return next;
       }
       return [...prev, { product: p, qty, pack: usePack }];
     });
     setOpen(true);
   };
   const remove: CartCtx["remove"] = (id, pack) =>
-    setItems(prev => prev.filter(x => !(x.product.id === id && x.pack === pack)));
+    setItems((prev) => prev.filter((x) => !(x.product.id === id && x.pack === pack)));
   const setQty: CartCtx["setQty"] = (id, pack, qty) =>
-    setItems(prev => prev.map(x => x.product.id === id && x.pack === pack ? { ...x, qty: Math.max(1, qty) } : x));
+    setItems((prev) =>
+      prev.map((x) =>
+        x.product.id === id && x.pack === pack ? { ...x, qty: Math.max(1, qty) } : x,
+      ),
+    );
   const clear = () => setItems([]);
 
-  const value = useMemo<CartCtx>(() => ({
-    items, add, remove, setQty, clear, open, setOpen,
-    count: items.reduce((s, i) => s + i.qty, 0),
-    subtotal: items.reduce((s, i) => s + i.qty * i.product.price, 0),
-  }), [items, open]);
+  const value = useMemo<CartCtx>(
+    () => ({
+      items,
+      add,
+      remove,
+      setQty,
+      clear,
+      open,
+      setOpen,
+      count: items.reduce((s, i) => s + i.qty, 0),
+      subtotal: items.reduce((s, i) => s + i.qty * i.product.price, 0),
+    }),
+    [items, open],
+  );
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }

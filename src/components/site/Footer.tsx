@@ -5,8 +5,8 @@ import logoImg from "@/assets/logo (1).png";
 export function Footer() {
   return (
     <footer className="mt-24 bg-primary text-primary-foreground">
-      <div className="container-x grid gap-10 py-14 md:grid-cols-4">
-        <div>
+      <div className="container-x grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-4 lg:py-14">
+        <div className="min-w-0">
           <div className="flex items-center gap-2 mb-4">
             <Link
               to="/"
@@ -37,7 +37,7 @@ export function Footer() {
             </a>
           </div>
         </div>
-        <div>
+        <div className="min-w-0">
           <h4 className="font-serif text-lg mb-4">Shop</h4>
           <ul className="space-y-2 text-sm text-primary-foreground/80">
             <li>
@@ -60,7 +60,7 @@ export function Footer() {
             </li>
           </ul>
         </div>
-        <div>
+        <div className="min-w-0">
           <h4 className="font-serif text-lg mb-4">Support</h4>
           <ul className="space-y-2 text-sm text-primary-foreground/80">
             <li>
@@ -77,32 +77,35 @@ export function Footer() {
             </li>
           </ul>
         </div>
-        <div>
+        <div className="min-w-0">
           <h4 className="font-serif text-lg mb-4">Stay in touch</h4>
           <ul className="space-y-2 text-sm text-primary-foreground/80 mb-4">
-            <li className="flex gap-2">
-              <Phone className="h-4 w-4 mt-0.5" /> +91 98000 00000
+            <li className="flex gap-2 break-words">
+              <Phone className="h-4 w-4 shrink-0 mt-0.5" /> +91 98000 00000
             </li>
-            <li className="flex gap-2">
-              <Mail className="h-4 w-4 mt-0.5" /> hello@mandarbenare.in
+            <li className="flex gap-2 break-all">
+              <Mail className="h-4 w-4 shrink-0 mt-0.5" /> hello@mandarbenare.in
             </li>
-            <li className="flex gap-2">
-              <MapPin className="h-4 w-4 mt-0.5" /> Maharashtra, India
+            <li className="flex gap-2 break-words">
+              <MapPin className="h-4 w-4 shrink-0 mt-0.5" /> Maharashtra, India
             </li>
           </ul>
-          <form onSubmit={(e) => e.preventDefault()} className="flex">
+          <form
+            onSubmit={(e) => e.preventDefault()}
+            className="flex flex-col gap-2 sm:max-w-md sm:flex-row lg:flex-col xl:flex-row"
+          >
             <input
               placeholder="Your email"
-              className="flex-1 rounded-l-full px-4 py-2 text-sm text-foreground"
+              className="min-w-0 flex-1 rounded-full px-4 py-2 text-sm text-foreground sm:rounded-l-full sm:rounded-r-none lg:rounded-full xl:rounded-l-full xl:rounded-r-none"
             />
-            <button className="rounded-r-full bg-accent text-accent-foreground px-4 text-sm font-medium">
+            <button className="rounded-full bg-accent text-accent-foreground px-4 py-2 text-sm font-medium sm:rounded-l-none sm:rounded-r-full lg:rounded-full xl:rounded-l-none xl:rounded-r-full">
               Join
             </button>
           </form>
         </div>
       </div>
       <div className="border-t border-white/10">
-        <div className="container-x py-5 text-xs text-primary-foreground/70 flex flex-col md:flex-row gap-2 justify-between">
+        <div className="container-x flex flex-col gap-2 py-5 text-center text-xs text-primary-foreground/70 md:flex-row md:justify-between md:text-left">
           <span>© {new Date().getFullYear()} Mandar Benare Agarbatti. All rights reserved.</span>
           <span>Crafted with devotion in India.</span>
         </div>

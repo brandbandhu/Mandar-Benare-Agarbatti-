@@ -109,12 +109,12 @@ function Home() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/40" />
         </div>
-        <div className="container-x relative grid md:grid-cols-2 gap-10 py-20 md:py-32">
+        <div className="container-x relative grid min-h-[520px] items-center gap-8 py-16 sm:py-20 md:grid-cols-2 md:py-28 lg:py-32">
           <div className="fade-up">
             <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-secondary">
               <span className="h-px w-8 bg-secondary" /> Since generations
             </span>
-            <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl mt-4 leading-[1.05] text-foreground">
+            <h1 className="mt-4 max-w-3xl break-words font-serif text-4xl leading-[1.05] text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
               Fragrance for Prayer,
               <br /> Peace & Everyday <em className="text-secondary">Devotion</em>
             </h1>
@@ -122,13 +122,16 @@ function Home() {
               Discover handcrafted agarbatti, dhoop and pooja essentials made to bring purity,
               positivity and calmness into your home.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link to="/shop" className="btn-saffron rounded-full px-7 py-3.5 text-sm font-medium">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Link
+                to="/shop"
+                className="btn-saffron rounded-full px-7 py-3.5 text-center text-sm font-medium"
+              >
                 Shop Now
               </Link>
               <Link
                 to="/shop"
-                className="btn-outline-dark rounded-full px-7 py-3.5 text-sm font-medium"
+                className="btn-outline-dark rounded-full px-7 py-3.5 text-center text-sm font-medium"
               >
                 Explore Best Sellers
               </Link>
@@ -144,10 +147,10 @@ function Home() {
           title="Shop by Category"
           sub="Curated essentials for every devotional moment."
         />
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5 mt-10">
+        <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 md:gap-5 lg:grid-cols-6">
           {categories.map((c) => (
             <Link key={c.name} to={c.to} className="group">
-              <div className="aspect-square overflow-hidden rounded-2xl bg-muted hover-zoom shadow-card">
+              <div className="aspect-square overflow-hidden rounded-2xl bg-muted shadow-card hover-zoom">
                 <img
                   src={c.img}
                   alt={c.name}
@@ -155,7 +158,7 @@ function Home() {
                   className="h-full w-full object-cover"
                 />
               </div>
-              <p className="mt-3 text-center font-serif text-base md:text-lg group-hover:text-secondary">
+              <p className="mt-3 break-words text-center font-serif text-base group-hover:text-secondary md:text-lg">
                 {c.name}
               </p>
             </Link>
@@ -170,7 +173,7 @@ function Home() {
           title="Most Loved Fragrances"
           sub="Trusted across thousands of Indian homes."
         />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-10">
+        <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {bestProducts.map((p) => (
             <ProductCard key={p.id} p={p} />
           ))}
@@ -181,15 +184,15 @@ function Home() {
       <section className="bg-muted/40 py-16 md:py-24">
         <div className="container-x">
           <SectionHead eyebrow="Discover" title="Shop by Mood & Scent" />
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-10">
+          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {moods.map((m) => (
               <Link
                 key={m}
                 to="/scent-finder"
-                className="group rounded-2xl bg-card border p-6 md:p-8 hover:-translate-y-1 transition-transform shadow-card"
+                className="group rounded-2xl border bg-card p-5 shadow-card transition-transform hover:-translate-y-1 md:p-8"
               >
                 <Sparkles className="h-6 w-6 text-secondary mb-3" />
-                <h3 className="font-serif text-xl md:text-2xl">{m}</h3>
+                <h3 className="break-words font-serif text-xl md:text-2xl">{m}</h3>
                 <p className="text-sm text-muted-foreground mt-2 group-hover:text-foreground">
                   Explore picks →
                 </p>
@@ -200,7 +203,7 @@ function Home() {
       </section>
 
       {/* Heritage */}
-      <section className="container-x py-20 md:py-28 grid md:grid-cols-2 gap-12 items-center">
+      <section className="container-x grid items-center gap-10 py-16 md:grid-cols-2 md:gap-12 md:py-28">
         <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-soft">
           <img
             src={catA}
@@ -211,7 +214,7 @@ function Home() {
         </div>
         <div>
           <span className="text-xs uppercase tracking-[0.3em] text-secondary">Our Story</span>
-          <h2 className="font-serif text-3xl md:text-5xl mt-3">
+          <h2 className="mt-3 break-words font-serif text-3xl md:text-5xl">
             Rooted in Tradition, Crafted for Today
           </h2>
           <p className="mt-5 text-muted-foreground leading-relaxed">
@@ -228,7 +231,7 @@ function Home() {
       <section className="bg-primary text-primary-foreground py-16 md:py-20">
         <div className="container-x">
           <h2 className="font-serif text-3xl md:text-4xl text-center">Why Choose Mandar Benare</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mt-12">
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
             {why.map(({ i: Icon, t }) => (
               <div key={t} className="text-center">
                 <div className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-white/10">
@@ -244,7 +247,7 @@ function Home() {
       {/* Featured */}
       <section className="container-x py-16 md:py-24">
         <SectionHead eyebrow="Premium" title="Featured Range" />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 mt-10">
+        <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {featuredProducts.map((p) => (
             <ProductCard key={p.id} p={p} />
           ))}
@@ -255,7 +258,7 @@ function Home() {
       <section className="bg-muted/40 py-16 md:py-24">
         <div className="container-x">
           <SectionHead eyebrow="Reviews" title="Loved by Devotees" />
-          <div className="grid md:grid-cols-3 gap-6 mt-10">
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
             {reviews.map((r) => (
               <div key={r.n} className="rounded-2xl bg-card p-7 shadow-card">
                 <div className="flex gap-0.5 text-accent mb-3">
@@ -272,10 +275,12 @@ function Home() {
       </section>
 
       {/* Scent finder */}
-      <section className="container-x py-20">
-        <div className="rounded-3xl bg-secondary text-secondary-foreground p-10 md:p-16 grid md:grid-cols-2 gap-8 items-center">
+      <section className="container-x py-16 md:py-20">
+        <div className="grid items-center gap-8 rounded-3xl bg-secondary p-6 text-secondary-foreground sm:p-10 md:grid-cols-2 md:p-16">
           <div>
-            <h2 className="font-serif text-3xl md:text-4xl">Not sure which fragrance suits you?</h2>
+            <h2 className="break-words font-serif text-3xl md:text-4xl">
+              Not sure which fragrance suits you?
+            </h2>
             <p className="mt-3 opacity-90">
               Take our 3-question scent finder to discover your perfect daily fragrance.
             </p>
@@ -283,7 +288,7 @@ function Home() {
           <div className="md:text-right">
             <Link
               to="/scent-finder"
-              className="inline-block rounded-full bg-background text-foreground px-7 py-3.5 text-sm font-medium hover:opacity-90"
+              className="inline-block w-full rounded-full bg-background px-7 py-3.5 text-center text-sm font-medium text-foreground hover:opacity-90 sm:w-auto"
             >
               Find Your Scent
             </Link>
@@ -303,17 +308,20 @@ function Home() {
 
       {/* Newsletter */}
       <section className="container-x pb-24">
-        <div className="rounded-3xl border bg-card p-10 md:p-14 text-center">
-          <h2 className="font-serif text-3xl">Stay in the Fragrance Loop</h2>
+        <div className="rounded-3xl border bg-card p-6 text-center sm:p-10 md:p-14">
+          <h2 className="break-words font-serif text-3xl">Stay in the Fragrance Loop</h2>
           <p className="text-muted-foreground mt-3 max-w-xl mx-auto">
             Receive devotional offers, festive packs and fragrance recommendations.
           </p>
-          <form onSubmit={(e) => e.preventDefault()} className="mt-6 flex max-w-md mx-auto">
+          <form
+            onSubmit={(e) => e.preventDefault()}
+            className="mx-auto mt-6 flex max-w-md flex-col gap-3 sm:flex-row sm:gap-0"
+          >
             <input
               placeholder="Email address"
-              className="flex-1 rounded-l-full border px-5 py-3 outline-none focus:ring-2 focus:ring-ring"
+              className="min-w-0 flex-1 rounded-full border px-5 py-3 outline-none focus:ring-2 focus:ring-ring sm:rounded-l-full sm:rounded-r-none"
             />
-            <button className="btn-saffron rounded-r-full px-6 py-3 text-sm font-medium">
+            <button className="btn-saffron rounded-full px-6 py-3 text-sm font-medium sm:rounded-l-none sm:rounded-r-full">
               Subscribe
             </button>
           </form>
@@ -329,7 +337,7 @@ function SectionHead({ eyebrow, title, sub }: { eyebrow?: string; title: string;
       {eyebrow && (
         <span className="text-xs uppercase tracking-[0.3em] text-secondary">{eyebrow}</span>
       )}
-      <h2 className="font-serif text-3xl md:text-5xl mt-3">{title}</h2>
+      <h2 className="mt-3 break-words font-serif text-3xl md:text-5xl">{title}</h2>
       {sub && <p className="mt-3 text-muted-foreground">{sub}</p>}
     </div>
   );
@@ -340,10 +348,12 @@ function FaqItem({ q, a }: { q: string; a: string }) {
     <div className="rounded-xl border bg-card">
       <button
         onClick={() => setOpen((o) => !o)}
-        className="w-full flex items-center justify-between p-5 text-left"
+        className="flex w-full items-center justify-between gap-4 p-5 text-left"
       >
-        <span className="font-medium">{q}</span>
-        <ChevronDown className={`h-5 w-5 transition-transform ${open ? "rotate-180" : ""}`} />
+        <span className="min-w-0 break-words font-medium">{q}</span>
+        <ChevronDown
+          className={`h-5 w-5 shrink-0 transition-transform ${open ? "rotate-180" : ""}`}
+        />
       </button>
       {open && <div className="px-5 pb-5 text-sm text-muted-foreground">{a}</div>}
     </div>
